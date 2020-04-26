@@ -8,7 +8,7 @@ export default () => {
   const isLoggedIn = useIsLoggedIn();
   const logIn = useLogIn();
   const logOut = useLogOut();
-  //const isLoggedIn = true;
+  //console.log(isLoggedIn);
 
   return (
     <View style={{ flex: "1" }}>

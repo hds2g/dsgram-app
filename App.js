@@ -20,9 +20,10 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   const preLoad = async () => {
+    //await AsyncStorage.clear();
     try {
       await Font.loadAsync({
-        ...Ionicons.font
+        ...Ionicons.font,
       });
       await Asset.loadAsync([require("./assets/logo.png")]);
       const cache = new InMemoryCache();
@@ -36,6 +37,7 @@ export default function App() {
       });
 
       const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
+      //console.log(isLoggedIn);
       if (!isLoggedIn || isLoggedIn === "false") {
         setIsLoggedIn(false);
       } else {
@@ -56,8 +58,8 @@ export default function App() {
   return loaded && client && isLoggedIn !== null ? (
     <ApolloProvider client={client}>
       <ThemeProvider theme={styles}>
-        <AuthProvider>
-          <NavController isLoggedIn={isLoggedIn} />
+        <AuthProvider isLoggedIn={isLoggedIn}>
+          <NavController />
         </AuthProvider>
       </ThemeProvider>
     </ApolloProvider>

@@ -29,11 +29,11 @@ export default function App() {
       const cache = new InMemoryCache();
       await persistCache({
         cache,
-        storage: AsyncStorage
+        storage: AsyncStorage,
       });
       const client = new ApolloClient({
         cache,
-        ...apolloClientOptions
+        ...apolloClientOptions,
       });
 
       const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");

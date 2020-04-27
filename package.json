@@ -17,6 +17,7 @@
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-cache-persist": "^0.1.1",
     "expo": "~37.0.3",
+    "expo-facebook": "~8.1.0",
     "expo-font": "~8.1.0",
     "graphql": "^14.6.0",
     "prop-types": "^15.7.2",

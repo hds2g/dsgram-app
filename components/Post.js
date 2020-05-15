@@ -23,15 +23,31 @@ const Location = styled.Text`
   font-size: 12px;
 `;
 const IconsContainer = styled.View`
-  padding: 10px;
   flex-direction: row;
+  margin-bottom: 5px;
 `;
 const IconContainer = styled.View`
   margin-right: 10px;
 `;
+const InfoContainer = styled.View`
+  padding: 10px;
+`;
+const Caption = styled.Text`
+  margin: 3px 0px;
+`;
+const CommentCount = styled.Text`
+  opacity: 0.5;
+  font-size: 13px;
+`;
 
-const Post = ({ user, location, files = [] }) => {
-  //console.log(files);
+const Post = ({
+  user,
+  location,
+  files = [],
+  likeCount,
+  caption,
+  comments = [],
+}) => {
   return (
     <Container>
       <Header>
@@ -48,7 +64,10 @@ const Post = ({ user, location, files = [] }) => {
           </HeaderUserContainer>
         </Touchable>
       </Header>
-      <Swiper showsPagination={false} style={{ height: 512 }}>
+      <Swiper
+        showsPagination={false}
+        style={{ height: constants.height / 2.5 }}
+      >
         {files.map((file) => (
           <Image
             style={{ width: constants.width, height: constants.height / 2.5 }}
@@ -57,28 +76,37 @@ const Post = ({ user, location, files = [] }) => {
           />
         ))}
       </Swiper>
-      <IconsContainer>
+      <InfoContainer>
+        <IconsContainer>
+          <Touchable>
+            <IconContainer>
+              <Ionicons
+                size={28}
+                name={
+                  Platform.OS === "ios" ? "ios-heart-empty" : "md-heart-empty"
+                }
+              />
+            </IconContainer>
+          </Touchable>
+          <Touchable>
+            <IconContainer>
+              <Ionicons
+                size={28}
+                name={Platform.OS === "ios" ? "ios-text" : "md-text"}
+              />
+            </IconContainer>
+          </Touchable>
+        </IconsContainer>
         <Touchable>
-          <IconContainer>
-            <Ionicons
-              size={28}
-              name={
-                Platform.OS === "ios" ? "ios-heart-empty" : "md-heart-empty"
-              }
-            />
-          </IconContainer>
+          <Bold>{likeCount === 1 ? "1 like" : `${likeCount} likes`}</Bold>
         </Touchable>
+        <Caption>
+          <Bold>{user.username}</Bold> {caption}
+        </Caption>
         <Touchable>
-          <IconContainer>
-            <Ionicons
-              size={28}
-              name={
-                Platform.OS === "ios" ? "ios-heart-empty" : "md-heart-empty"
-              }
-            />
-          </IconContainer>
+          <CommentCount>See all {comments.length} comments</CommentCount>
         </Touchable>
-      </IconsContainer>
+      </InfoContainer>
     </Container>
   );
 };

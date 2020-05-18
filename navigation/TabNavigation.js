@@ -39,9 +39,7 @@ export default createBottomTabNavigator(
       },
     },
     Search: {
-      screen: stackFactory(Search, {
-        title: "Search",
-      }),
+      screen: stackFactory(Search),
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <NavIcon
@@ -101,6 +99,7 @@ export default createBottomTabNavigator(
     },
   },
   {
+    initialRouteName: "Search",
     tabBarOptions: {
       showLabel: false,
       style: {

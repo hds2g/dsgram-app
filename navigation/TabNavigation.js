@@ -12,17 +12,32 @@ import { Platform } from "react-native";
 import NavIcon from "../components/NavIcon";
 import { stackStyles } from "./config";
 
+import styles from "../styles";
+
 const stackFactory = (initialRoute, customConfig) =>
-  createStackNavigator({
-    InitialRoute: {
-      screen: initialRoute,
-      navigationOptions: {
-        ...customConfig,
-        headerStyle: { ...stackStyles },
+  createStackNavigator(
+    {
+      InitialRoute: {
+        screen: initialRoute,
+        navigationOptions: {
+          ...customConfig,
+        },
+      },
+      Detail: {
+        screen: Detail,
+        navigationOptions: {
+          headerBackTitle: " ",
+          headerTintColor: styles.blackColor,
+          title: "Photo",
+        },
       },
     },
-    Detail,
-  });
+    {
+      defaultNavigationOptions: {
+        headerStyle: { ...stackStyles },
+      },
+    }
+  );
 
 export default createBottomTabNavigator(
   {
@@ -59,8 +74,12 @@ export default createBottomTabNavigator(
         tabBarIcon: ({ focused }) => (
           <NavIcon
             focused={focused}
-            size={28}
-            name={Platform.OS === "ios" ? "ios-add" : "md-add"}
+            size={32}
+            name={
+              Platform.OS === "ios"
+                ? "ios-add-circle-outline"
+                : "md-add-circle-outline"
+            }
           />
         ),
       },

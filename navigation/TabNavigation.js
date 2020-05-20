@@ -11,7 +11,7 @@ import Detail from "../screens/Detail";
 import { Platform } from "react-native";
 import NavIcon from "../components/NavIcon";
 import { stackStyles } from "./config";
-
+import UserDetail from "../screens/UserDetail";
 import styles from "../styles";
 
 const stackFactory = (initialRoute, customConfig) =>
@@ -31,9 +31,17 @@ const stackFactory = (initialRoute, customConfig) =>
           title: "Photo",
         },
       },
+      UserDetail: {
+        screen: UserDetail,
+        navigationOptions: {
+          title: "User",
+        },
+      },
     },
     {
       defaultNavigationOptions: {
+        headerBackTitle: null,
+        headerTintColor: styles.blackColor,
         headerStyle: { ...stackStyles },
       },
     }

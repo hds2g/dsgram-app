@@ -9,5 +9,6 @@ export default () => {
   const logOut = useLogOut();
   //console.log(isLoggedIn);
 
-  return isLoggedIn ? <MainNavigation /> : <AuthNavigation />;
+  //return isLoggedIn ? <MainNavigation /> : <AuthNavigation />;
+  return <MainNavigation />;
 };

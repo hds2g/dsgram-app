@@ -18,8 +18,8 @@ const View = styled.View`
 const Icon = styled.View``;
 
 const Button = styled.View`
-  width: 80;
-  height: 80;
+  width: 80px;
+  height: 80px;
   border-radius: 40px;
   border: 10px solid ${styles.lightGreyColor};
 `;
@@ -40,7 +40,8 @@ export default ({ navigation }) => {
         quality: 1,
       });
       const asset = await MediaLibrary.createAssetAsync(uri);
-      console.log(asset);
+      setCanTakePhoto(true);
+      navigation.navigate("Upload", { photo: asset });
     } catch (e) {
       console.log(e);
       setCanTakePhoto(true);
